@@ -4,4 +4,12 @@ import java.util.List;
 
 public class QuestionnaireDTO {
     private List<QuestionDTO> listeQuestions;
+
+    public QuestionnaireDTO(List<QuestionDTO> listeQuestions) {
+        this.listeQuestions = listeQuestions;
+    }
+
+    public List<QuestionDTO> getListeQuestions() {
+        return listeQuestions;
+    }
 }
