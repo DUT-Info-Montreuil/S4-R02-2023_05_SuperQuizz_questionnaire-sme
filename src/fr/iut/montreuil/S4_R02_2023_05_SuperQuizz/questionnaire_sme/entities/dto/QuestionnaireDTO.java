@@ -12,4 +12,11 @@ public class QuestionnaireDTO {
     public List<QuestionDTO> getListeQuestions() {
         return listeQuestions;
     }
+
+    @Override
+    public String toString() {
+        return "QuestionnaireDTO{" +
+                "listeQuestions=" + listeQuestions +
+                '}';
+    }
 }

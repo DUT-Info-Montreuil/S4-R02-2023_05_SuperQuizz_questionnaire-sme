@@ -18,4 +18,12 @@ public class QuestionDTO {
     public String getReponse() {
         return reponse;
     }
+
+    @Override
+    public String toString() {
+        return "QuestionDTO{" +
+                "libelle='" + libelle + '\'' +
+                ", reponse='" + reponse + '\'' +
+                '}';
+    }
 }
