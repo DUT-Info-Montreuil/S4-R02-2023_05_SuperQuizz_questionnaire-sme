@@ -7,10 +7,10 @@ import java.util.List;
 public interface IServiceQuestionnaire {
     /*
     4 cas possibles :
-        - fichier correcte
-        - fichier incorrecte
-        - fichier vide
-        - fichier pas trouvé
+        - fichier correcte renvoie une liste de QuestionnaireDTO
+        - fichier incorrecte renvoie exception fichierIncorrecteException
+        - fichier vide renvoie exception fichierVideException
+        - fichier pas trouvé renvoie exception fichierPasTrouveException
     */
     public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier);
 
