@@ -3,23 +3,23 @@ package fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.bo
 import java.util.List;
 
 public class QuestionnaireBO {
-    private List<int> idQuestionnaires;
-    private List<int> numQuestions;
+    private List<Integer> idQuestionnaires;
+    private List<Integer> numQuestions;
     private List<String> langues;
     private List<String> libelles;
     private List<String> reponse;
-    private List<int> difficultes;
+    private List<Integer> difficultes;
     private List<String> details;
     private List<String> sources;
 
     public QuestionnaireBO() {
     }
 
-    public void setIdQuestionnaires(List<int> idQuestionnaires) {
+    public void setIdQuestionnaires(List<Integer> idQuestionnaires) {
         this.idQuestionnaires = idQuestionnaires;
     }
 
-    public void setNumQuestions(List<int> numQuestions) {
+    public void setNumQuestions(List<Integer> numQuestions) {
         this.numQuestions = numQuestions;
     }
 
@@ -35,7 +35,7 @@ public class QuestionnaireBO {
         this.reponse = reponse;
     }
 
-    public void setDifficultes(List<int> difficultes) {
+    public void setDifficultes(List<Integer> difficultes) {
         this.difficultes = difficultes;
     }
 
