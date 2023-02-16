@@ -2,7 +2,7 @@ package fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.modeles;
 
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.dto.QuestionnaireDTO;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierIncorrectExceptions;
-import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierPasTrouvéExceptions;
+import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierPasTrouveExceptions;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierVideExceptions;
 
 import java.io.FileNotFoundException;
@@ -16,7 +16,7 @@ public interface IServiceQuestionnaire {
         - fichier vide renvoie exception fichierVideException
         - fichier pas trouvé renvoie exception fichierPasTrouveException
     */
-    public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier) throws FichierIncorrectExceptions, FichierVideExceptions, FichierPasTrouvéExceptions;
+    public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier) throws FichierIncorrectExceptions, FichierVideExceptions, FichierPasTrouveExceptions;
 
     /*
     3 cas possibles :
