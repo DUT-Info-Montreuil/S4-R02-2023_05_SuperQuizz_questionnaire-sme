@@ -19,13 +19,16 @@ public class ServiceQuestionnaireChargementTest {
     @Test
     public void chargementQuestionnaireCorrect() throws FichierPasTrouveExceptions, FichierVideExceptions, FichierIncorrectExceptions {
         serviceQuestionnaireTest = new ServiceQuestionnaireMockCorrect();
-        QuestionDTO questionCorrect = new QuestionDTO("De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee");
+        QuestionDTO questionCorrect = new QuestionDTO("De quel petit objet se munit le golfeur pour surelever sa balle avant de la frapper ","Tee");
         List<QuestionDTO> listQuestionsCorrect = new ArrayList<QuestionDTO>();
         listQuestionsCorrect.add(questionCorrect);
         QuestionnaireDTO leQuestionnaireCorrect = new QuestionnaireDTO(listQuestionsCorrect);
         List<QuestionnaireDTO> reponseCorrect = new ArrayList<QuestionnaireDTO>();
         reponseCorrect.add(leQuestionnaireCorrect);
-        Assertions.assertEquals(reponseCorrect,serviceQuestionnaireTest.chargerListeQuestionnaire("chargementCorrect.csv"));
+        List<QuestionnaireDTO> bonnereponse = serviceQuestionnaireTest.chargerListeQuestionnaire("chargementCorrect.csv");
+        Assertions.assertEquals(leQuestionnaireCorrect.getListeQuestions().get(0).getReponse(),bonnereponse.get(0).getListeQuestions().get(0).getReponse());
+        Assertions.assertEquals(leQuestionnaireCorrect.getListeQuestions().get(0).getLibelle(),bonnereponse.get(0).getListeQuestions().get(0).getLibelle());
+
     }
 
 

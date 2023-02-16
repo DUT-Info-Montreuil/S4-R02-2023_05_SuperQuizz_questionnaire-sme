@@ -5,7 +5,6 @@ import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.except
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierPasTrouveExceptions;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierVideExceptions;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface IServiceQuestionnaire {

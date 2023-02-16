@@ -11,7 +11,7 @@ public class ServiceQuestionnaireMockCorrect implements IServiceQuestionnaire {
 
     @Override
     public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier) {
-        QuestionDTO questionCorrect = new QuestionDTO("De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee");
+        QuestionDTO questionCorrect = new QuestionDTO("De quel petit objet se munit le golfeur pour surelever sa balle avant de la frapper ","Tee");
         List<QuestionDTO> listQuestionsCorrect = new ArrayList<QuestionDTO>();
         listQuestionsCorrect.add(questionCorrect);
         QuestionnaireDTO leQuestionnaireCorrect = new QuestionnaireDTO(listQuestionsCorrect);
