@@ -6,6 +6,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvValidationException;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.bo.QuestionnaireBO;
+import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.dto.QuestionDTO;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.dto.QuestionnaireDTO;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.modeles.IServiceQuestionnaire;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierIncorrectExceptions;
@@ -14,6 +15,7 @@ import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.except
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,14 +36,6 @@ public class ServiceQuestionnaireImpl implements IServiceQuestionnaire {
         }
     }
 
-    private List<Integer> idQuestionnaires;
-    private List<Integer> numQuestions;
-    private List<String> langues;
-    private List<String> libelles;
-    private List<String> reponses;
-    private List<Integer> difficultes;
-    private List<String> details;
-    private List<String> sources;
     @Override
     public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier) throws FichierIncorrectExceptions, FichierVideExceptions, FichierPasTrouveExceptions {
         try {
@@ -64,7 +58,22 @@ public class ServiceQuestionnaireImpl implements IServiceQuestionnaire {
         } catch (CsvValidationException e) {
             e.printStackTrace();
         }
-        return null;
+
+        List<QuestionnaireDTO> listQuestionnaireDTO = new ArrayList<>();
+        int i = 0;
+        int idQuestionnaire;
+        List<QuestionDTO> listQuestionDTO;
+
+        while (i < questionnaireBO.getIdQuestionnaires().size()) {
+            listQuestionDTO = new ArrayList<>();
+            idQuestionnaire = questionnaireBO.getIdQuestionnaires().get(i);
+            while (i < questionnaireBO.getIdQuestionnaires().size() && questionnaireBO.getIdQuestionnaires().get(i) == idQuestionnaire) {
+                listQuestionDTO.add(new QuestionDTO(questionnaireBO.getLibelles().get(i), questionnaireBO.getReponses().get(i)));
+                i++;
+            }
+            listQuestionnaireDTO.add(new QuestionnaireDTO(listQuestionDTO));
+        }
+        return listQuestionnaireDTO;
     }
 
     @Override
