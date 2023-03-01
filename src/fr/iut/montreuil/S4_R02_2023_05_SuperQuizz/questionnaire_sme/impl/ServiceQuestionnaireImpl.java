@@ -13,6 +13,7 @@ import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.except
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierPasTrouveExceptions;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierVideExceptions;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,11 +29,11 @@ public class ServiceQuestionnaireImpl implements IServiceQuestionnaire {
         try {
             s.chargerListeQuestionnaire("src/fr/iut/montreuil/S4_R02_2023_05_SuperQuizz/questionnaire_sme/ressources/questionsQuizz_V1.1.csv");
         } catch (FichierIncorrectExceptions e) {
-            e.printStackTrace();
+            System.out.println("FichierIncorrectExceptions");
         } catch (FichierVideExceptions e) {
-            e.printStackTrace();
+            System.out.println("FichierVideExceptions");
         } catch (FichierPasTrouveExceptions e) {
-            e.printStackTrace();
+            System.out.println("FichierPasTrouveExceptions");
         }
     }
 
@@ -53,10 +54,18 @@ public class ServiceQuestionnaireImpl implements IServiceQuestionnaire {
                 questionnaireBO.getDetails().add(nextLine[6]);
                 questionnaireBO.getSources().add(nextLine[7]);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            if (questionnaireBO.getIdQuestionnaires().size() == 0)
+                throw new FichierVideExceptions();
+        } catch (FileNotFoundException e) {
+            throw new FichierPasTrouveExceptions();
+        } catch (NumberFormatException e) {
+            throw new FichierIncorrectExceptions();
+        }  catch (ArrayIndexOutOfBoundsException e) {
+            throw new FichierIncorrectExceptions();
         } catch (CsvValidationException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         List<QuestionnaireDTO> listQuestionnaireDTO = new ArrayList<>();
