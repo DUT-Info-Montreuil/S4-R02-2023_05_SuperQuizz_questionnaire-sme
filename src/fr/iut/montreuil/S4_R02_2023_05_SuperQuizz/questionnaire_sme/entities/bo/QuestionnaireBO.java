@@ -1,5 +1,6 @@
 package fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.bo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionnaireBO {
@@ -7,43 +8,51 @@ public class QuestionnaireBO {
     private List<Integer> numQuestions;
     private List<String> langues;
     private List<String> libelles;
-    private List<String> reponse;
+    private List<String> reponses;
     private List<Integer> difficultes;
     private List<String> details;
     private List<String> sources;
 
     public QuestionnaireBO() {
+        idQuestionnaires = new ArrayList<>();
+        numQuestions = new ArrayList<>();
+        langues = new ArrayList<>();
+        libelles = new ArrayList<>();
+        reponses = new ArrayList<>();
+        difficultes = new ArrayList<>();
+        details = new ArrayList<>();
+        sources = new ArrayList<>();
     }
 
-    public void setIdQuestionnaires(List<Integer> idQuestionnaires) {
-        this.idQuestionnaires = idQuestionnaires;
+    public List<Integer> getIdQuestionnaires() {
+        return idQuestionnaires;
     }
 
-    public void setNumQuestions(List<Integer> numQuestions) {
-        this.numQuestions = numQuestions;
+    public List<Integer> getNumQuestions() {
+        return numQuestions;
     }
 
-    public void setLangues(List<String> langues) {
-        this.langues = langues;
+    public List<String> getLangues() {
+        return langues;
     }
 
-    public void setLibelles(List<String> libelles) {
-        this.libelles = libelles;
+    public List<String> getLibelles() {
+        return libelles;
     }
 
-    public void setReponse(List<String> reponse) {
-        this.reponse = reponse;
+    public List<String> getReponses() {
+        return reponses;
     }
 
-    public void setDifficultes(List<Integer> difficultes) {
-        this.difficultes = difficultes;
+    public List<Integer> getDifficultes() {
+        return difficultes;
     }
 
-    public void setDetails(List<String> details) {
-        this.details = details;
+    public List<String> getDetails() {
+        return details;
     }
 
-    public void setSources(List<String> sources) {
-        this.sources = sources;
+    public List<String> getSources() {
+        return sources;
     }
 }
