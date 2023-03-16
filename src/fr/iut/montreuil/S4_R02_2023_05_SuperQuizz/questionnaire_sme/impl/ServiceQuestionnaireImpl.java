@@ -24,19 +24,6 @@ public class ServiceQuestionnaireImpl implements IServiceQuestionnaire {
 
     private QuestionnaireBO questionnaireBO;
 
-    public static void main(String[] args) {
-        ServiceQuestionnaireImpl s = new ServiceQuestionnaireImpl();
-        try {
-            s.chargerListeQuestionnaire("src/fr/iut/montreuil/S4_R02_2023_05_SuperQuizz/questionnaire_sme/ressources/questionsQuizz_V1.1.csv");
-        } catch (FichierIncorrectExceptions e) {
-            System.out.println("FichierIncorrectExceptions");
-        } catch (FichierVideExceptions e) {
-            System.out.println("FichierVideExceptions");
-        } catch (FichierPasTrouveExceptions e) {
-            System.out.println("FichierPasTrouveExceptions");
-        }
-    }
-
     @Override
     public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier) throws FichierIncorrectExceptions, FichierVideExceptions, FichierPasTrouveExceptions {
         try {
@@ -80,7 +67,7 @@ public class ServiceQuestionnaireImpl implements IServiceQuestionnaire {
                 listQuestionDTO.add(new QuestionDTO(questionnaireBO.getNumQuestions().get(i), questionnaireBO.getLibelles().get(i), questionnaireBO.getReponses().get(i), questionnaireBO.getLangues().get(i), questionnaireBO.getDifficultes().get(i)));
                 i++;
             }
-            listQuestionnaireDTO.add(new QuestionnaireDTO(listQuestionDTO));
+            listQuestionnaireDTO.add(new QuestionnaireDTO(idQuestionnaire, listQuestionDTO));
         }
         return listQuestionnaireDTO;
     }
