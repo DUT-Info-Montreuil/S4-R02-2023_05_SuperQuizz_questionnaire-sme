@@ -12,14 +12,8 @@ public class ServiceQuestionnaireMockIncorrect implements IServiceQuestionnaire 
 
 
     @Override
-    public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier) {
-        QuestionDTO questionIncorrect = new QuestionDTO("De quel petit objet se munit le golfeur pour surelever sa balle avant de la frapper ",null);
-        List<QuestionDTO> listQuestionsIncorrect = new ArrayList<QuestionDTO>();
-        listQuestionsIncorrect.add(questionIncorrect);
-        QuestionnaireDTO leQuestionnaireIncorrect = new QuestionnaireDTO(listQuestionsIncorrect);
-        List<QuestionnaireDTO> reponseIncorrect = new ArrayList<QuestionnaireDTO>();
-        reponseIncorrect.add(leQuestionnaireIncorrect);
-        return reponseIncorrect;
+    public List<QuestionnaireDTO> chargerListeQuestionnaire(String nomFichier) throws FichierIncorrectExceptions{
+       throw new FichierIncorrectExceptions();
     }
 
     @Override

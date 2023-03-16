@@ -5,6 +5,7 @@ import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.dto
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.modeles.IServiceQuestionnaire;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.tests.impl.chargement.mock.ServiceQuestionnaireMockCorrect;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.tests.impl.chargement.mock.ServiceQuestionnaireMockIncorrect;
+import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.tests.impl.chargement.mock.ServiceQuestionnaireMockNomInvalide;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.tests.impl.chargement.mock.ServiceQuestionnaireMockVide;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierIncorrectExceptions;
 import fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.utils.exceptions.FichierPasTrouveExceptions;
@@ -36,31 +37,25 @@ public class ServiceQuestionnaireChargementTest {
     @Test
     public void chargementQuestionnaireIncorrect() throws FichierIncorrectExceptions, FichierPasTrouveExceptions, FichierVideExceptions {
         serviceQuestionnaireTest = new ServiceQuestionnaireMockIncorrect();
-        QuestionDTO questionIncorrect = new QuestionDTO("De quel petit objet se munit le golfeur pour surelever sa balle avant de la frapper ",null);
-        List<QuestionDTO> listQuestionsIncorrect = new ArrayList<QuestionDTO>();
-        listQuestionsIncorrect.add(questionIncorrect);
-        QuestionnaireDTO leQuestionnaireIncorrect = new QuestionnaireDTO(listQuestionsIncorrect);
-        List<QuestionnaireDTO> reponseIncorrect = new ArrayList<QuestionnaireDTO>();
-        reponseIncorrect.add(leQuestionnaireIncorrect);
-        List<QuestionnaireDTO> mauvaisereponse = serviceQuestionnaireTest.chargerListeQuestionnaire("chargementIncorrect.csv");
-        Assertions.assertEquals(leQuestionnaireIncorrect.getListeQuestions().get(0).getReponse(),mauvaisereponse.get(0).getListeQuestions().get(0).getReponse());
-        Assertions.assertEquals(leQuestionnaireIncorrect.getListeQuestions().get(0).getLibelle(),mauvaisereponse.get(0).getListeQuestions().get(0).getLibelle());
+       // QuestionDTO questionIncorrectAttendu = new QuestionDTO("De quel petit objet se munit le golfeur pour surelever sa balle avant de la frapper ",null);
+        //serviceQuestionnaireTest.chargerListeQuestionnaire("chargementIncorrect.csv");
+        Assertions.assertThrows(FichierIncorrectExceptions.class, ()->
+                serviceQuestionnaireTest.chargerListeQuestionnaire("chargementIncorrect.csv"),"Valeur incorrect ou manquante");
 
     }
 
     @Test
     public void chargementQuestionnaireVide() throws FichierIncorrectExceptions, FichierPasTrouveExceptions, FichierVideExceptions {
         serviceQuestionnaireTest = new ServiceQuestionnaireMockVide();
-        QuestionDTO questionVide = new QuestionDTO("De quel petit objet se munit le golfeur pour surelever sa balle avant de la frapper ",null);
-        List<QuestionDTO> listQuestionsVide = new ArrayList<QuestionDTO>();
-        listQuestionsVide.add(questionVide);
-        QuestionnaireDTO leQuestionnaireVide = new QuestionnaireDTO(listQuestionsVide);
-        List<QuestionnaireDTO> reponseVide = new ArrayList<QuestionnaireDTO>();
-        reponseVide.add(leQuestionnaireVide);
-        List<QuestionnaireDTO> reponsevide = serviceQuestionnaireTest.chargerListeQuestionnaire("chargementVide.csv");
-        Assertions.assertEquals(leQuestionnaireVide.getListeQuestions().get(0).getReponse(),reponsevide.get(0).getListeQuestions().get(0).getReponse());
-        Assertions.assertEquals(leQuestionnaireVide.getListeQuestions().get(0).getLibelle(),reponsevide.get(0).getListeQuestions().get(0).getLibelle());
+        Assertions.assertThrows(FichierVideExceptions.class, ()->
+                serviceQuestionnaireTest.chargerListeQuestionnaire("chargementVide.csv"),"Nom du fichier incorrect ou inexistant");
+    }
 
+    @Test
+    public void chargementQuestionnaireNomInvalide() throws FichierIncorrectExceptions, FichierPasTrouveExceptions, FichierVideExceptions {
+        serviceQuestionnaireTest = new ServiceQuestionnaireMockNomInvalide();
+        Assertions.assertThrows(FichierPasTrouveExceptions.class, ()->
+                serviceQuestionnaireTest.chargerListeQuestionnaire("okok.csv"),"Nom du fichier incorrect ou inexistant");
     }
 
 
