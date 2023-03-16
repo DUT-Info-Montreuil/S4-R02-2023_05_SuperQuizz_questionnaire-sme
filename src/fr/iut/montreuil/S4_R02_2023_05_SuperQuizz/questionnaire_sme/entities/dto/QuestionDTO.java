@@ -9,6 +9,7 @@ public class QuestionDTO {
     private String reponse;
     private String langues;
     private int difficultes;
+    private StatsQuestionsDTO statsQuestions;
 
     public QuestionDTO(int numQuestion, String libelle, String reponse, String langues, int difficultes) {
         this.numQuestion = numQuestion;
@@ -16,6 +17,9 @@ public class QuestionDTO {
         this.reponse = reponse;
         this.langues = langues;
         this.difficultes = difficultes;
+        this.statsQuestions = new StatsQuestionsDTO();
+
+
     }
 
     public int getNumQuestion() {
