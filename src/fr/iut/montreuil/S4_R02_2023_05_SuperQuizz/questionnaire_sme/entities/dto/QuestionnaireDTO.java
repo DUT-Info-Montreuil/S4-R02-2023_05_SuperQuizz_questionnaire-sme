@@ -39,6 +39,7 @@ public class QuestionnaireDTO {
         return "QuestionnaireDTO{" +
                 "idQuestionnaire=" + idQuestionnaire +
                 ", listeQuestions=" + listeQuestions +
+                ", nbDeFoisJoueQuestionnaire=" + nbDeFoisJoueQuestionnaire +
                 '}';
     }
 }

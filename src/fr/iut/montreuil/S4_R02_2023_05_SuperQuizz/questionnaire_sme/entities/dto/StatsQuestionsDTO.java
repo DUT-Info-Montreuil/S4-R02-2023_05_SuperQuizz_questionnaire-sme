@@ -24,4 +24,12 @@ public class StatsQuestionsDTO {
     public void setNbDeReussiteQuestion(int nbDeReussiteQuestion) {
         this.nbDeReussiteQuestion = nbDeReussiteQuestion;
     }
+
+    @Override
+    public String toString() {
+        return "StatsQuestionsDTO{" +
+                "nbDeFoisJoueQuestion=" + nbDeFoisJoueQuestion +
+                ", nbDeReussiteQuestion=" + nbDeReussiteQuestion +
+                '}';
+    }
 }

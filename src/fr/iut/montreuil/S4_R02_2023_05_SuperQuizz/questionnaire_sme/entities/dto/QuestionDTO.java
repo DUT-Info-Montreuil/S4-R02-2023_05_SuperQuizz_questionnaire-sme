@@ -42,6 +42,10 @@ public class QuestionDTO {
         return difficultes;
     }
 
+    public StatsQuestionsDTO getStatsQuestions() {
+        return statsQuestions;
+    }
+
     @Override
     public String toString() {
         return "QuestionDTO{" +
@@ -50,6 +54,7 @@ public class QuestionDTO {
                 ", reponse='" + reponse + '\'' +
                 ", langues='" + langues + '\'' +
                 ", difficultes=" + difficultes +
+                ", statsQuestions=" + statsQuestions +
                 '}';
     }
 }

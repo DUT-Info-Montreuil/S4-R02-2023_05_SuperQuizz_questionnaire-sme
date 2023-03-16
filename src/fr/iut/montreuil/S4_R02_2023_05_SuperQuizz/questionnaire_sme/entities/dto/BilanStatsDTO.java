@@ -37,4 +37,13 @@ public class BilanStatsDTO {
     public void setStatsQuestions(List<StatsQuestionsDTO> statsQuestions) {
         this.statsQuestions = statsQuestions;
     }
+
+    @Override
+    public String toString() {
+        return "BilanStatsDTO{" +
+                "idQuestionnaire=" + idQuestionnaire +
+                ", nbDeFoisJoueQuestionnaire=" + nbDeFoisJoueQuestionnaire +
+                ", statsQuestions=" + statsQuestions +
+                '}';
+    }
 }
