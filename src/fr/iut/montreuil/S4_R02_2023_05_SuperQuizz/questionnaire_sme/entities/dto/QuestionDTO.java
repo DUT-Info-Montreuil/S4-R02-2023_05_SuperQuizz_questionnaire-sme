@@ -3,12 +3,22 @@ package fr.iut.montreuil.S4_R02_2023_05_SuperQuizz.questionnaire_sme.entities.dt
 import java.util.List;
 
 public class QuestionDTO {
+    private int numQuestion;
     private String libelle;
     private String reponse;
+    private String langues;
+    private int difficultes;
 
-    public QuestionDTO(String libelle, String reponse) {
+    public QuestionDTO(int numQuestion, String libelle, String reponse, String langues, int difficultes) {
+        this.numQuestion = numQuestion;
         this.libelle = libelle;
         this.reponse = reponse;
+        this.langues = langues;
+        this.difficultes = difficultes;
+    }
+
+    public int getNumQuestion() {
+        return numQuestion;
     }
 
     public String getLibelle() {
@@ -19,11 +29,22 @@ public class QuestionDTO {
         return reponse;
     }
 
+    public String getLangues() {
+        return langues;
+    }
+
+    public int getDifficultes() {
+        return difficultes;
+    }
+
     @Override
     public String toString() {
         return "QuestionDTO{" +
-                "libelle='" + libelle + '\'' +
+                "numQuestion=" + numQuestion +
+                ", libelle='" + libelle + '\'' +
                 ", reponse='" + reponse + '\'' +
+                ", langues='" + langues + '\'' +
+                ", difficultes=" + difficultes +
                 '}';
     }
 }
