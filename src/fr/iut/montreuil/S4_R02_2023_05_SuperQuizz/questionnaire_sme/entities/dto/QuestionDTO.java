@@ -17,7 +17,7 @@ public class QuestionDTO {
         this.reponse = reponse;
         this.langues = langues;
         this.difficultes = difficultes;
-        this.statsQuestions = new StatsQuestionsDTO();
+        this.statsQuestions = new StatsQuestionsDTO(numQuestion,0,0);
 
 
     }
