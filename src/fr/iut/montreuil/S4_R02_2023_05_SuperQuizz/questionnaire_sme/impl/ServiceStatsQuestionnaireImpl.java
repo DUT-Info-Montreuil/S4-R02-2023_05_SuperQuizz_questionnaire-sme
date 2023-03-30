@@ -40,7 +40,6 @@ public class ServiceStatsQuestionnaireImpl implements IServiceStatsQuestionnaire
         for (QuestionDTO question : questions) {
 
             int idQuestion = question.getNumQuestion();
-
             if (idQuestion <= 0) {
                 throw new StatsQuestionsIncorrectExeptions();
             }
@@ -51,11 +50,15 @@ public class ServiceStatsQuestionnaireImpl implements IServiceStatsQuestionnaire
             }
 
             int nbDeFoisReponseCorrecte = question.getStatsQuestions().getNbDeReussiteQuestion();
-            if (nbDeFoisReponseCorrecte < 0) {
+            if (nbDeFoisReponseCorrecte < 0 ) {
                 throw new StatsQuestionsIncorrectExeptions();
             }
 
             if (nbDeFoisJoueQuestion < nbDeFoisReponseCorrecte){
+                throw new StatsQuestionsIncorrectExeptions();
+            }
+
+            if(nbDeFoisJoueQuestion>nbDeFoisJoueQuestionnaire){
                 throw new StatsQuestionsIncorrectExeptions();
             }
 
