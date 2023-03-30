@@ -107,7 +107,7 @@ public class ServiceStatsQuestionnaireTest {
         listeQuestions2.add(questionDTO2);
         listeQuestions2.add(new QuestionDTO(2,"fr","De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee",1));
         listeQuestions2.add(new QuestionDTO(3,"fr","De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee",1));
-        QuestionnaireDTO questionnaireDTO2 = new QuestionnaireDTO(1, listeQuestions);
+        QuestionnaireDTO questionnaireDTO2 = new QuestionnaireDTO(1, listeQuestions2);
         questionnaireDTO2.setNbDeFoisJoueQuestionnaire(5);
         Assertions.assertThrows(StatsQuestionsIncorrectExeptions.class, () -> serviceStatsQuestionnaireTest.fournirStatsQuestions(questionnaireDTO2));
 
@@ -119,19 +119,19 @@ public class ServiceStatsQuestionnaireTest {
         listeQuestions3.add(questionDTO);
         listeQuestions3.add(new QuestionDTO(2,"fr","De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee",1));
         listeQuestions3.add(new QuestionDTO(3,"fr","De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee",1));
-        QuestionnaireDTO questionnaireDTO3 = new QuestionnaireDTO(1, listeQuestions);
+        QuestionnaireDTO questionnaireDTO3 = new QuestionnaireDTO(1, listeQuestions3);
         questionnaireDTO3.setNbDeFoisJoueQuestionnaire(5);
         Assertions.assertThrows(StatsQuestionsIncorrectExeptions.class, () -> serviceStatsQuestionnaireTest.fournirStatsQuestions(questionnaireDTO3));
 
         //idQuestion négatif
         List<QuestionDTO> listeQuestions4 = new ArrayList<>();
         QuestionDTO questionDTO4 = new QuestionDTO(-1,"fr","De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee",1);
-        questionDTO3.getStatsQuestions().setNbDeReussiteQuestion(1);
-        questionDTO3.getStatsQuestions().setNbDeFoisJoueQuestion(2);
+        questionDTO4.getStatsQuestions().setNbDeReussiteQuestion(1);
+        questionDTO4.getStatsQuestions().setNbDeFoisJoueQuestion(2);
         listeQuestions4.add(questionDTO);
         listeQuestions4.add(new QuestionDTO(2,"fr","De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee",1));
         listeQuestions4.add(new QuestionDTO(3,"fr","De quel petit objet se munit le golfeur pour surélever sa balle avant de la frapper ?","Tee",1));
-        QuestionnaireDTO questionnaireDTO4 = new QuestionnaireDTO(1, listeQuestions);
+        QuestionnaireDTO questionnaireDTO4 = new QuestionnaireDTO(1, listeQuestions4);
         questionnaireDTO4.setNbDeFoisJoueQuestionnaire(5);
         Assertions.assertThrows(StatsQuestionsIncorrectExeptions.class, () -> serviceStatsQuestionnaireTest.fournirStatsQuestions(questionnaireDTO4));
 
