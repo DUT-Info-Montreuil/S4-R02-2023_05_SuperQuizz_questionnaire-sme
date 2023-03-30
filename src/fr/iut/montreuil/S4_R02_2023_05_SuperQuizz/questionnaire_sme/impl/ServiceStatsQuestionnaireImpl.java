@@ -35,28 +35,31 @@ public class ServiceStatsQuestionnaireImpl implements IServiceStatsQuestionnaire
             throw new StatsQuestionsIncorrectExeptions();
         }
 
-
         List<StatsQuestionsDTO> statsQuestions = new ArrayList<>();
-        StatsQuestionsDTO statsQuestion = new StatsQuestionsDTO(-1,0,0);
+
         for (QuestionDTO question : questions) {
 
             int idQuestion = question.getNumQuestion();
-            statsQuestion.setNumQuestion(idQuestion);
+
             if (idQuestion <= 0) {
                 throw new StatsQuestionsIncorrectExeptions();
             }
 
-            int nbDeFoisJoueQuestion = statsQuestion.getNbDeFoisJoueQuestion();
+            int nbDeFoisJoueQuestion = question.getStatsQuestions().getNbDeFoisJoueQuestion();
             if (nbDeFoisJoueQuestion < 0) {
                 throw new StatsQuestionsIncorrectExeptions();
             }
 
-            int nbDeFoisReponseCorrecte = statsQuestion.getNbDeReussiteQuestion();
+            int nbDeFoisReponseCorrecte = question.getStatsQuestions().getNbDeReussiteQuestion();
             if (nbDeFoisReponseCorrecte < 0) {
                 throw new StatsQuestionsIncorrectExeptions();
             }
 
-            StatsQuestionsDTO statsQuestion2 = new StatsQuestionsDTO(idQuestion,nbDeFoisJoueQuestion,nbDeFoisReponseCorrecte);
+            if (nbDeFoisJoueQuestion < nbDeFoisReponseCorrecte){
+                throw new StatsQuestionsIncorrectExeptions();
+            }
+
+            StatsQuestionsDTO statsQuestion = new StatsQuestionsDTO(idQuestion,nbDeFoisJoueQuestion,nbDeFoisReponseCorrecte);
             statsQuestions.add(statsQuestion);
         }
 
